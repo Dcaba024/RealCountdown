@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+    <div class="container">
+        <h4>Welcome <%= currentUser.username %></h4>
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Welcome to RealCountdown</h1>
+                <p>Here are all the houses in our database</p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="/homes/new">Add new home</a>
+                </p>
+            </div>
+        </header>
+
+        <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+
+                <% homes.forEach(function(home){ %>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="img-thumbnail rounded mx-auto d-block">
+                            <img src="<%=home.Image %>" alt="" height="100%" width="100%">
+                            <div class="caption">
+                                <h3><%= home.author.username %>'s home for sale</h3>
+                            </div>
+                            <p>
+                                <a href="/homes/<%=home._id%>" class="btn btn-primary btn-large">View house</a>
+                            </p>
+                           
+                        </div>
+                    </div>
+                    <% }); %>
+                
+        
+        </div>
+
+
+    
+
+    </div>
+<%- include("../partials/footer") %>

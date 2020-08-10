@@ -1,0 +1,17 @@
+<%- include("../partials/header") %>
+<h1>Home Owner: <%= home.author.username %></h1>
+
+<img src="<%= home.Image%>" alt="">
+
+<h2><%= home.address %></h2>
+
+<p><%= home.description %></p>
+<p> <em>Submitted by <%= home.author.username %></em></p>
+
+<a class="btn btn-warning" href="/homes/<%=home._id%>/edit">EDIT</a>
+
+<form id="delete-form" action="/homes/<%=home._id%>?_method=DELETE" method="POST">
+    <button class="btn btn-danger">Delete</button>
+</form>
+
+<%- include("../partials/footer") %>

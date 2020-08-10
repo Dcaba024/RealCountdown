@@ -1,0 +1,28 @@
+<%- include("../partials/header") %>
+
+<div style="text-align: center;">
+    <h1>Lets start selling your home</h1>
+    <p>first we need your home information dont worry we wont give these agents your address just the area where you live</p>    
+</div>
+
+<div style="width: 30%; margin: 50px auto;">
+    <form action="/homes" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="text" name="address" placeholder="address">
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" type="text" name="Image" placeholder="image url">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="text" name="description" placeholder= "description" id="">
+        </div>
+        
+        
+        <button class="btn btn-lg btn-block btn-outline-dark">Submit!</button>
+    </form>
+</div>
+
+
+<%- include("../partials/footer") %>
