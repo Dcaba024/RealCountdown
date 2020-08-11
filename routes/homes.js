@@ -55,7 +55,7 @@ router.get("/:id", function(req, res){
             console.log(err);
         }else{
               //render show template with that house
-            res.render("homes/show", {home:foundHome});
+            res.render("homes/show", {home:foundHome, currentUser: req.user});
         }
     });
 });
