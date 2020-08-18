@@ -1,0 +1,27 @@
+<%- include("../partials/header") %>
+
+<div class="row">
+    <div class="col-md-4">
+        <h1><%= user.email %></h1>
+        <h2><%= user.username %></h2>
+    </div>
+</div>
+<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    <% homes.forEach(function(home){ %>
+        <div class="col-md-3 col-sm-6">
+            <div class="img-thumbnail rounded mx-auto d-block">
+                <img src="<%=home.Image %>" alt="" height="100%" width="100%">
+                <div class="caption">
+                    <h3><%= home.author.username %>'s home for sale</h3>
+                </div>
+                <p>
+                    <a href="/homes/<%=home._id%>" class="btn btn-primary btn-large">View house</a>
+                </p>
+               
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+
+<%- include("../partials/footer") %>

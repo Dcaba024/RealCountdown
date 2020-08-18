@@ -1,12 +1,16 @@
 <%- include("../partials/header") %>
-<h1>Home Owner: <%= home.author.username %></h1>
+
+<div class="container">
+
+    <h1>Home Owner: <%= home.author.username %></h1>
+
 
 <img src="<%= home.Image%>" alt="">
 
 <h2><%= home.address %></h2>
 
 <p><%= home.description %></p>
-<p> <em>Submitted by <%= home.author.username %></em></p>
+<p> <em>Submitted by <a href="/users/<%= home.author.id %>"><%= home.author.username %></a></em></p>
 
 <% if(currentUser && home.author.id.equals(currentUser._id)){ %>
 <a class="btn btn-warning" href="/homes/<%=home._id%>/edit">EDIT</a>
@@ -14,6 +18,17 @@
     <button class="btn btn-danger">Delete</button>
 </form>
 <% } %>
+
+<% if(currentUser && currentUser.isAgent){ %>
+
+    <a class="btn btn-success" href="">Bid</a>
+
+<% } %>
+
+
+
+
+</div>
 
 
 <%- include("../partials/footer") %>

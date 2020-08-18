@@ -5,14 +5,32 @@
         <header class="jumbotron">
             <div class="container">
                 <h1>Welcome to RealCountdown</h1>
-                <p>Here are all the houses in our database</p>
+                <% if(currentUser && currentUser.isAgent){ %>
+                    <p>Here are all the houses in our database</p>
+                 <% } %>
+                 
+
+                 <% if(currentUser && (currentUser.isAgent === false)){ %>
+                    <p>
+                        <a class="btn btn-primary btn-large" href="/users/<%= currentUser.id %>">View your bids</a>
+                    </p>
+
+                 <% } %>
+
                 <p>
                     <a class="btn btn-primary btn-large" href="/homes/new">Add new home</a>
                 </p>
+
+                
+
+
+
+
             </div>
         </header>
-
-        <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+        <% if(currentUser && currentUser.isAgent){ %>
+            <h1><%=currentUser.username %> is an agent</h1>
+            <div class="row text-center" style="display: flex; flex-wrap: wrap;">
 
                 <% homes.forEach(function(home){ %>
                     <div class="col-md-3 col-sm-6">
@@ -29,8 +47,15 @@
                     </div>
                     <% }); %>
                 
-        
         </div>
+         <% } %>
+
+      
+
+            
+
+
+       
 
 
     
