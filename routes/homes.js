@@ -23,6 +23,7 @@ router.get("/", middleware.isLoggedIn, function(req, res){
 router.post("/", middleware.isLoggedIn, function(req, res){
     var address = req.body.address
     var Image = req.body.Image
+    
     //var homeOwner = req.body.homeOwner
     var description = req.body.description
     var author = {
@@ -50,7 +51,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 //SHOW - shows more info about the house selected
 router.get("/:id", function(req, res){
     //find the houses with the provided ID
-    Home.findById(req.params.id, function(err, foundHome){
+    Home.findById(req.params.id).populate("bids").exec(function(err, foundHome){
         if(err){
             console.log(err);
         }else{

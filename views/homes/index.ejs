@@ -9,17 +9,21 @@
                     <p>Here are all the houses in our database</p>
                  <% } %>
                  
-
-                 <% if(currentUser && (currentUser.isAgent === false)){ %>
+                 <div class="row">
+                    <% if(currentUser && (currentUser.isAgent === false)){ %>
+                        <p>
+                            <a class="btn btn-primary btn-large" href="/users/<%= currentUser.id %>">View your bids</a>
+                        </p>
+    
+                     <% } %>
+    
                     <p>
-                        <a class="btn btn-primary btn-large" href="/users/<%= currentUser.id %>">View your bids</a>
+                        <a class="btn btn-primary btn-large" href="/homes/new">Add new home</a>
                     </p>
 
-                 <% } %>
+                 </div>
 
-                <p>
-                    <a class="btn btn-primary btn-large" href="/homes/new">Add new home</a>
-                </p>
+                
 
                 
 

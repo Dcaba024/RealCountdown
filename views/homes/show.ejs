@@ -20,11 +20,17 @@
 <% } %>
 
 <% if(currentUser && currentUser.isAgent){ %>
-
-    <a class="btn btn-success" href="">Bid</a>
-
+    <a class="btn btn-success" href="/homes/<%=home._id%>/bids/new">Bid</a>
 <% } %>
 
+<div class="table">
+    
+    <%home.bids.forEach(function(bid){ %>
+        <h3><%= bid.author.username %></h3>
+        <h3><%= bid.rate %></h3>
+
+    <% }) %>
+</div>
 
 
 

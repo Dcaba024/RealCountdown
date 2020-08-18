@@ -1,3 +1,24 @@
 #delete-form {
     display: inline;
 }
+
+.container .jumbotron{
+    background-color: white;
+}
+
+.btn{
+    display: inline;
+    margin: 5px 5px 5px 5px;
+}
+
+#landing-header{
+    background-color: violet;
+    text-align: center;
+    padding-top: 500px;
+    
+    height: 900px;
+}
+
+#Login-jumbotron{
+    text-align: center;
+}
