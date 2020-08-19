@@ -23,14 +23,35 @@
     <a class="btn btn-success" href="/homes/<%=home._id%>/bids/new">Bid</a>
 <% } %>
 
-<div class="table">
+<table id="bid-table" class="table table-borderless table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th style="border-top-left-radius: 25px;" scope="col">Agent username</th>
+            <th style="border-top-right-radius: 25px;" scope="col">Bid Rate</th>
+        </tr>
     
-    <%home.bids.forEach(function(bid){ %>
-        <h3><%= bid.author.username %></h3>
-        <h3><%= bid.rate %></h3>
-
+    </thead>
+    <tbody>
+         <%home.bids.forEach(function(bid){ %>
+            
+        <tr>
+                    <td><a href="/users/<%= bid.author.id %>"><%= bid.author.username%> </a></td>
+                    <td><%= bid.rate %></td>
+        </tr>
     <% }) %>
-</div>
+    </tbody>
+
+</table>
+    
+
+
+
+
+
+
+
+   
+
 
 
 

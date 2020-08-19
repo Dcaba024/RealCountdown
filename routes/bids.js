@@ -41,7 +41,7 @@ router.post("/", function(req, res){
                      home.save();
                      console.log(bid);
  
-                     req.flash("success", "Successfully added a comment");
+                     req.flash("success", "Successfully added a Bid");
                      res.redirect("/homes/"+ home._id);
  
                 }   
