@@ -10,14 +10,44 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-        <nav class="navbar navbar-light" style="background-color: rgb(52, 10, 92)">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/homes">
-                    <img src="https://i.imgur.com/cU0WZw5.jpg" width="170" height="60" class="d-inline-block align-top" alt="" loading="lazy">
-                </a>
-            </div>
+        <nav class="navbar navbar-light  navbar-expand-lg navbar-light bg-light" style="background-color: rgb(52, 10, 92)">
+<div class="container">
 
-            <ul class="nav justify-content-end">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/homes">
+            <img src="https://i.imgur.com/cU0WZw5.jpg" width="170" height="60" class="d-inline-block align-top" alt="" loading="lazy">
+        </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/register">SAVE MONEY</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">ABOUT US</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">RESOURCES</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/login" >Login</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/logout" >LogOut</a>
+            </li>
+        </ul>
+
+    </div>
+    
+
+
+
+
+</div>
+
+
+            <!-- <ul class="nav justify-content-end">
                 <div class="btn-toolbar">
                    <%if(!currentUser){%>
                         <div class="btn btn-secondary m-1 nav-link"><a href="/register" style="color: white; text-decoration: none;">Signup</a></div>
@@ -37,7 +67,9 @@
                     <% } %>
                     </li>
                 </div>
-            </ul>
+            </ul> -->
+
+
           </nav>
 
 

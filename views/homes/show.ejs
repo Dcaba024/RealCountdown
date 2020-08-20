@@ -1,10 +1,9 @@
 <%- include("../partials/header") %>
 
 <div class="container">
+    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
 
-    <h1>Home Owner: <%= home.author.username %></h1>
-
-
+    </div>
 <img src="<%= home.Image%>" alt="">
 
 <h2><%= home.address %></h2>
@@ -36,7 +35,7 @@
             
         <tr>
                     <td><a href="/users/<%= bid.author.id %>"><%= bid.author.username%> </a></td>
-                    <td><%= bid.rate %></td>
+                    <td><%= bid.rate %>%</td>
         </tr>
     <% }) %>
     </tbody>
