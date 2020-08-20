@@ -83,5 +83,15 @@ router.get("/users/:id", function(req, res){
     })
 });
 
+//ABOUT US ROUTE
+router.get("/about-us", function(req, res){
+        res.render("aboutus");
+});
+
+
+//RESOURCES ROUTE
+router.get("/resources", function(req, res){
+    res.render("resources");
+});
 
 module.exports = router;
