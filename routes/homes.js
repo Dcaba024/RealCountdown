@@ -6,7 +6,7 @@ var middleware = require("../middleware/index.js");
 
 
 //index show all homes to the Agents
-router.get("/", middleware.isLoggedIn, function(req, res){
+router.get("/", function(req, res){
     
     //get all the homes from the db
     Home.find({}, function(err, allhomes){

@@ -1,12 +1,19 @@
 <%- include("../partials/header") %>
 
 <div class="container">
-    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-
+    <div class="container">
+        <div class="row">
+            <h1 style="font-size:24px;font-weight:bold;"><%= home.address %></h1>
+        </div>
+        <div class="dropdown-divider"></div>
+        
     </div>
-<img src="<%= home.Image%>" alt="">
+<div>
+    <img src="<%= home.Image%>" alt="">
+</div>
 
-<h2><%= home.address %></h2>
+
+
 
 <p><%= home.description %></p>
 <p> <em>Submitted by <a href="/users/<%= home.author.id %>"><%= home.author.username %></a></em></p>

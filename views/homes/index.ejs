@@ -1,12 +1,13 @@
 <%- include("../partials/header") %>
 
     <div class="container">
-        <h4>Welcome <%= currentUser.username %></h4>
+        <h4>Welcome to the countdown room</h4>
         <header class="jumbotron">
             <div class="container">
                 <h1>Welcome to RealCountdown</h1>
                 <% if(currentUser && currentUser.isAgent){ %>
                     <p>Here are all the houses in our database</p>
+                    <h1><%=currentUser.username %> is an agent</h1>
                  <% } %>
                  
                  <div class="row">
@@ -32,27 +33,37 @@
 
             </div>
         </header>
-        <% if(currentUser && currentUser.isAgent){ %>
-            <h1><%=currentUser.username %> is an agent</h1>
-            <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+      
+           
 
+            <ul id="index-card">
                 <% homes.forEach(function(home){ %>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="img-thumbnail rounded mx-auto d-block">
-                            <img src="<%=home.Image %>" alt="" height="100%" width="100%">
-                            <div class="caption">
-                                <h3><%= home.author.username %>'s home for sale</h3>
-                            </div>
-                            <p>
-                                <a href="/homes/<%=home._id%>" class="btn btn-primary btn-large">View Bid</a>
-                            </p>
-                           
+                <div id="icard">
+                    <li class="card">
+                        <div class="d-flex justify-content-start">
+                            <img class="pic" src="<%=home.Image %>" alt="" height="100%" width="100%">
                         </div>
-                    </div>
-                    <% }); %>
+                        
+                            <a href="/homes/<%=home._id%>" id="view-bid" class="btn btn-primary btn-sm">Details</a>
+                       
+                        <p id="par-card"><%= home.author.username %> wants to sell his house for</p>
+                        
+                    </li>
+                    
+
+                </div>
+
+                <% }); %>
+
+            </ul>
+            
+
+               
                 
-        </div>
-         <% } %>
+        
+      
+
+         
 
       
 
