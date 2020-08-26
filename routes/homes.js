@@ -5,7 +5,7 @@ var Home = require("../models/homes")
 var middleware = require("../middleware/index.js");
 
 
-//index show all homes to the Agents
+//index 
 router.get("/", function(req, res){
     
     //get all the homes from the db
@@ -22,6 +22,10 @@ router.get("/", function(req, res){
 //CREATE NEW HOME
 router.post("/", middleware.isLoggedIn, function(req, res){
     var address = req.body.address
+    var street = req.body.street
+    var city = req.body.city
+    var state = req.body.state
+    var zip = req.body.zip
     var Image = req.body.Image
     
     //var homeOwner = req.body.homeOwner
@@ -30,7 +34,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         id: req.user._id,
         username: req.user.username
     }
-    var newhome = {address:address, Image:Image, description:description, author:author}
+    var newhome = {address:address, street:street, city:city, state:state, zip:zip, Image:Image, description:description, author:author}
    
 
     //create a new home and save to database
@@ -70,6 +74,8 @@ router.get("/:id/edit", middleware.checkHomeOwnership, function(req, res){
 
 //UPDATE HOME ROUTE
 router.put("/:id", function(req, res){
+
+    
     //find and update the correct home
     Home.findByIdAndUpdate(req.params.id, req.body.home, function(err, updatedHome){
         if(err){
