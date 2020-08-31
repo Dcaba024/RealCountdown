@@ -58,7 +58,8 @@ router.get("/:bid_id", function(req, res){
         if(err){
             console.log(err)
         } else {
-            res.render("bids/show", {bid:foundbid, currentUser: req.user});
+            
+            res.render("bids/show", {home:req.params.id, bid:foundbid, currentUser: req.user});
         }
     });
 
@@ -88,6 +89,18 @@ router.put("/:bid_id", function(req,res){
             res.redirect("/homes/" + req.params.id);
         }
     });
+});
+
+
+//DESTROY BIDS
+router.delete("/:bid_id", function(req,res){
+    Bid.findByIdAndRemove(req.params.bid_id, function(err){
+        if(err){
+            console.log(err)
+        } else{
+            res.redirect("/homes/" + req.params.id);
+        }
+    })
 });
 
 module.exports = router;

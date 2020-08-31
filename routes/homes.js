@@ -106,7 +106,7 @@ router.delete("/:id", middleware.checkHomeOwnership, function(req,res){
             res.redirect("/homes");
         }
     })
-})
+});
 
 
 
