@@ -9,14 +9,22 @@ var middleware = require("../middleware/index.js");
 router.get("/", function(req, res){
     
     //get all the homes from the db
-    Home.find({}, function(err, allhomes){
+    // Home.find({}, function(err, allhomes){
+    //     if(err){
+    //         console.log(err);
+    //     } else{
+    //          res.render("homes/index", {homes:allhomes, currentUser: req.user});
+    //     }
+    // });
+   
+    Home.find({}).populate("bids").exec(function(err, allhomes){
         if(err){
             console.log(err);
         } else{
-             res.render("homes/index", {homes:allhomes, currentUser: req.user});
+            res.render("homes/index", {homes:allhomes, currentUser:req.user});
         }
     });
-   
+
 });
 
 //CREATE NEW HOME
@@ -27,6 +35,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var state = req.body.state
     var zip = req.body.zip
     var Image = req.body.Image
+    var price = req.body.price
     
     //var homeOwner = req.body.homeOwner
     var description = req.body.description
@@ -34,7 +43,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         id: req.user._id,
         username: req.user.username
     }
-    var newhome = {address:address, street:street, city:city, state:state, zip:zip, Image:Image, description:description, author:author}
+    var newhome = {address:address, street:street, city:city, state:state, zip:zip, Image:Image, price:price, description:description, author:author}
    
 
     //create a new home and save to database

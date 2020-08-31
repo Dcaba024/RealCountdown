@@ -8,7 +8,7 @@ var homeSchema = new mongoose.Schema({
     state: String,
     zip: String,
     Image: String,
-    askingRate: Number,
+    price: Number,
    // homeOwner: String,
     description: String,
     author: {

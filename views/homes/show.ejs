@@ -36,7 +36,7 @@
              <%home.bids.forEach(function(bid){ %>
                 
             <tr>
-                        <td><a href="/users/<%= bid.author.id %>"><%= bid.author.username%> </a></td>
+                        <td><a href="/homes/<%= home._id %>/bids/<%= bid._id %>"><%= bid.author.username%> </a></td>
                         <td><%= bid.rate %>%</td>
             </tr>
         <% }) %>

@@ -110,3 +110,8 @@ span{
 
     width: 50%;
 }
+
+#bid-rate{
+    position: absolute;
+    left: 25%;
+}

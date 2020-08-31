@@ -48,7 +48,29 @@
                        
                         <p id="par-card"><%= home.author.username %> house is in the <%= home.city %> area</p>
 
-                        <p id="sell-amount">House For sale: <br> <span>$400,000</span></p>
+                        <p id="sell-amount">House For sale: <br> <span>$<%= home.price %></span></p>
+
+                        
+                            <% var tmp = 10; %>
+                            <% home.bids.forEach(function(bid){ %>
+                            
+                             <%if(bid.rate < tmp){ %>
+                                 <% tmp = bid.rate %>
+                             <% } %>                            
+                             
+                            
+                            <% }) %>
+
+                            <% if(tmp < 10){ %>
+                                <p id="bid-rate">Lowest Bid is: <%= tmp %>%</p>
+                            <% } %>
+     
+                            
+                            
+                            
+                     
+
+                       
                         
                         
                     </li>
