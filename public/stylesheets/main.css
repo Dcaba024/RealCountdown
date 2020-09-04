@@ -115,3 +115,8 @@ span{
     position: absolute;
     left: 25%;
 }
+
+#status{
+    position: absolute;
+    left: 65%;
+}

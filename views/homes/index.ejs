@@ -65,13 +65,35 @@
                                 <p id="bid-rate">Lowest Bid is: <%= tmp %>%</p>
                             <% } %>
      
-                            
-                            
-                            
-                     
+                           
 
                        
-                        
+                        <div id="status">
+                            <p>Time Remaining</p>
+
+                           
+
+                           <% var countDownDate = home.countdown %>
+                            
+                           <% var now = new Date().getTime(); %>
+                            
+                           <% var distance = countDownDate - now; %>
+
+                           <% var days = Math.floor(distance / (1000 * 60 * 60 * 24)); %>
+                           <% var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); %>
+                           <% var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); %>
+                           <% var seconds = Math.floor((distance % (1000 * 60)) / 1000); %>
+                           <% var timeRemaining = (days - 29) + "d " + hours + "h " + minutes + "m " + seconds + "s "; %>
+
+
+
+
+
+                          
+                            <p><%= timeRemaining %></p>
+                            <p><%= home.expiredDate %></p>
+                            <p>sept 3 2020</p>
+                        </div>
                         
                     </li>
                     

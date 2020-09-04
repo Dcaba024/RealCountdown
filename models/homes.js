@@ -9,6 +9,8 @@ var homeSchema = new mongoose.Schema({
     zip: String,
     Image: String,
     price: Number,
+    countdown: Number,
+    expiredDate: String,
    // homeOwner: String,
     description: String,
     author: {

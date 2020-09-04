@@ -36,14 +36,26 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var zip = req.body.zip
     var Image = req.body.Image
     var price = req.body.price
+    var year = req.body.year
+    var month = req.body.month
+    var day = req.body.day
+
+
+
+    var countdown = new Date(year, month, day).getTime();
+
+    var expired = new Date(year,month - 1, day);
+
+    var expiredDate = expired.toDateString();
     
     //var homeOwner = req.body.homeOwner
     var description = req.body.description
+
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newhome = {address:address, street:street, city:city, state:state, zip:zip, Image:Image, price:price, description:description, author:author}
+    var newhome = {address:address, street:street, city:city, state:state, zip:zip, Image:Image, price:price, countdown:countdown, description:description, author:author, expiredDate:expiredDate}
    
 
     //create a new home and save to database
