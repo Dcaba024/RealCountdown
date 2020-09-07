@@ -8,10 +8,14 @@ var passport    = require("passport"),
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
     User        = require("./models/user");
-
+    require('dotenv').config();
 var homeRoutes = require("./routes/homes"),
     indexRoutes = require("./routes/index"),
     bidRoutes = require("./routes/bids");
+
+
+
+
 
 
 
