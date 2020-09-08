@@ -2,6 +2,10 @@ body{
     background-color:#d9dbda;
 }
 
+.jumbotron{
+    padding: 1rem 2rem;
+}
+
 #delete-form {
     display: inline;
 }
@@ -119,4 +123,11 @@ span{
 #status{
     position: absolute;
     left: 65%;
+}
+
+#searchbar{
+    position: relative;
+  left: 40%;
+  
+  margin-bottom: 3px;
 }

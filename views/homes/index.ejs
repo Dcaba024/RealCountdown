@@ -23,17 +23,26 @@
                     </p>
 
                  </div>
-
-                
-
-                
-
-
-
+                 <div id="searchbar" class="row">
+                    <form action="/homes" method="GET" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="search" placeholder="Search for home" class="form-control">
+                            <input type="submit" value="Search" class="btn btn-default">
+                        </div>
+                    </form>
+                </div>
 
             </div>
         </header>
-      
+       
+
+      <div class="row text-center">
+          <div class="col-md-6">
+              <% if(noMatch !== undefined) { %>
+                  <h4><%= noMatch %></h4>
+             <% } %>
+          </div>
+      </div>
            
 
             <ul id="index-card">

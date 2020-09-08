@@ -41,14 +41,36 @@ router.get("/", function(req, res){
     //     }
     // });
    
-    Home.find({}).populate("bids").exec(function(err, allhomes){
-        if(err){
-            console.log(err);
-        } else{
-            res.render("homes/index", {homes:allhomes, currentUser:req.user});
-        }
-    });
+    //query search
+    var noMatch = '';
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Home.find({city: regex}).populate("bids").exec(function(err, allhomes){
+            if(err){
+                console.log(err);
+            } else{
+                
+                if(allhomes.length < 1){
+                     noMatch = "No campground match that query, please try again."
+                }
+                res.render("homes/index", {homes:allhomes, currentUser:req.user, noMatch:noMatch});
+            }
+        });
 
+
+    } else{
+        Home.find({}).populate("bids").exec(function(err, allhomes){
+            if(err){
+                console.log(err);
+            } else{
+                res.render("homes/index", {homes:allhomes, currentUser:req.user, noMatch:noMatch});
+            }
+        });
+    
+
+    }
+
+  
 });
 
 //CREATE NEW HOME
@@ -155,6 +177,10 @@ router.delete("/:id", middleware.checkHomeOwnership, function(req,res){
         }
     })
 });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 
 
