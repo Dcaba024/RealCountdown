@@ -43,8 +43,11 @@ middlewareObj.isLoggedIn = function(req, res, next){
 };
 
 middlewareObj.isUserAgent = function(req, res, next){
-    if(req.isAuthenticated()){
-        User.findById(req.params.id, function(err, foundUser){
+            if(!req.user.isAgent){
+                req.flash("error", "You are not a agent");
+                res.redirect("back");
+            }
+
             if(err){
                 req.flash("error", "User not found");
                 res.redirect("back");
@@ -54,9 +57,7 @@ middlewareObj.isUserAgent = function(req, res, next){
                 next();
             
             }
-        });
-
-    }
+    
 
 };
 

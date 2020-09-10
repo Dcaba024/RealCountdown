@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router({mergeParams: true});
 var Home = require("../models/homes");
 var Bid = require("../models/bid");
+var middleware = require("../middleware/index.js");
 
 
 //NEW BID
@@ -67,7 +68,7 @@ router.get("/:bid_id", function(req, res){
 });
 
 //EDIT BIDS
-router.get("/:bid_id/edit", function(req, res){
+router.get("/:bid_id/edit", middleware.isLoggedIn, middleware.isUserAgent, function(req, res){
     
     Bid.findById(req.params.bid_id, function(err, foundbid){
         if(err){
