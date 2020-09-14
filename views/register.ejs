@@ -3,11 +3,15 @@
 
 <div class="jumbotron">
     <h1>Sign up page</h1>
-    <form action="/register" method="post">
+    <form action="/register" method="POST" enctype="multipart/form-data">
         <input type="text" name="username" placeholder="username">
         <input type="password" name="password" placeholder="password">
         <input type="email" name="email" placeholder="John@doe.com">
         <input type="form-control" type="text" name="agentCode" placeholder="Agentcode">
+        <div class="form-group">
+            <label for="image">profile image</label>
+            <input class="form-control" id="image" type="file" name="image" placeholder="profile image" accept="image/*" required>
+        </div>
 
         <button>sign up</button>
     </form>

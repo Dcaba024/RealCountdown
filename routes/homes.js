@@ -178,6 +178,7 @@ router.delete("/:id", middleware.checkHomeOwnership, function(req,res){
     })
 });
 
+
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };

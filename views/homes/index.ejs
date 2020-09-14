@@ -9,7 +9,7 @@
                     <p>Here are all the houses in our database</p>
                     <h1><%=currentUser.username %> is an agent</h1>
                  <% } %>
-                 
+                
                  <div class="row">
                     <% if(currentUser && (currentUser.isAgent === false)){ %>
                         <p>
@@ -17,10 +17,14 @@
                         </p>
     
                      <% } %>
-    
+                    
                     <p>
                         <a class="btn btn-primary btn-large" href="/homes/new">Add new home</a>
                     </p>
+                    <p>
+                        <a href="/agents" class="btn btn-primary btn-large">View Agents</a>
+                    </p>
+                    
 
                  </div>
                  <div id="searchbar" class="row">

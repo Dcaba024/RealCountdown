@@ -5,6 +5,7 @@ var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
     email:  String,
+    image: String,
     isAgent: {type: Boolean, default: false}
 });
 

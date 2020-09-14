@@ -11,7 +11,8 @@ var passport    = require("passport"),
     require('dotenv').config();
 var homeRoutes = require("./routes/homes"),
     indexRoutes = require("./routes/index"),
-    bidRoutes = require("./routes/bids");
+    bidRoutes = require("./routes/bids"),
+    agentsRoute = require("./routes/agents");
 
 
 
@@ -66,6 +67,7 @@ app.use(function(req, res, next){
 app.use("/homes",homeRoutes);
 app.use(indexRoutes);
 app.use("/homes/:id/bids", bidRoutes);
+app.use("/agents", agentsRoute);
 
 
 

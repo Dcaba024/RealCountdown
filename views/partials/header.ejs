@@ -33,6 +33,11 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/resources">RESOURCES</a>
             </li>
+            <% if(currentUser && (currentUser.isAgent === false)){ %>
+            <li class="nav-item active">
+                <a class="nav-link" href="/users/<%= currentUser.id %>/profile">Profile</a>
+            </li>
+            <% } %>
             <li class="nav-item active">
                 <a class="nav-link" href="/login" >Login</a>
             </li>

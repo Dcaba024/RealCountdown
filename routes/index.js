@@ -7,6 +7,28 @@ var Home        = require("../models/homes");
 var middleware = require("../middleware/index.js");
 
 
+var multer = require('multer');
+var storage = multer.diskStorage({
+  filename: function(req, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  }
+});
+var imageFilter = function (req, file, cb) {
+    // accept image files only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    cb(null, true);
+};
+var upload = multer({ storage: storage, fileFilter: imageFilter})
+
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: "dsvhyoymi",
+  api_key: process.env.API_KEY, 
+  api_secret:process.env.CLOUDINARY_API_SECRET
+});
+
 router.get("/", function(req,res){
     res.render("landing");
 });
@@ -21,27 +43,39 @@ router.get("/register", function(req, res){
 });
 
 //handle sign up logic
-router.post("/register", function(req, res){
+router.post("/register",upload.single('image'), function(req, res){
 
-    var newUser = new User({
-        username: req.body.username, 
-        email: req.body.email
-    });
-
-    if(req.body.agentCode ==='secretcode123'){
-        newUser.isAgent = true;
-    }
-    console.log(newUser);
-    User.register(newUser, req.body.password, function(err, user){
-        if(err){
-            console.log(err);
-            return res.render("register");
-        }else{
-            passport.authenticate("local")(req, res, function(){
-                res.redirect("/homes");
-            });
+    var image;
+    console.log(req.file.path);
+    cloudinary.uploader.upload(req.file.path, function(result) {
+       
+        
+        var newUser = new User({
+            username: req.body.username, 
+            email: req.body.email,
+             // add cloudinary url for the image to the home object under avatar property
+            image: result.secure_url
+        
+        });
+    
+        if(req.body.agentCode ==='secretcode123'){
+            newUser.isAgent = true;
         }
+        console.log(newUser);
+        User.register(newUser, req.body.password, function(err, user){
+            if(err){
+                console.log(err);
+                return res.render("register");
+            }else{
+                passport.authenticate("local")(req, res, function(){
+                    res.redirect("/homes");
+                });
+            }
+        });
+
     });
+
+   
 });
 
 
@@ -65,7 +99,7 @@ router.get("/logout", function(req, res){
 });
 
 
-//USER PROFILES
+//USER HOMES
 router.get("/users/:id", function(req, res){
     User.findById(req.params.id, function(err, foundUser){
         if(err){
@@ -81,6 +115,18 @@ router.get("/users/:id", function(req, res){
         });
         
     })
+});
+
+//USER PROFILES
+router.get("/users/:id/profile", function(req, res){
+    User.findById(req.params.id, function(err, foundUser){
+        if(err){
+            req.flash("error", "Something Went Wrong");
+            res.redirect("/");
+        } else{
+            res.render("users/profile", {user:foundUser ,currentUser: req.user});
+        }
+    });
 });
 
 //ABOUT US ROUTE
