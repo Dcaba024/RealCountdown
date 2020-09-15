@@ -6,7 +6,13 @@ var UserSchema = new mongoose.Schema({
     password: String,
     email:  String,
     image: String,
-    isAgent: {type: Boolean, default: false}
+    isAgent: {type: Boolean, default: false},
+    bids: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Bid"
+        }
+    ]
 });
 
 UserSchema.plugin(passportLocalMongoose);

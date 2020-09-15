@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+
+
+<div class="container">
+    <div class="row">
+        <div>
+            <img id="agent-pic" src="<%= agent.image%>" alt="...">
+        </div>
+        <table id="bid-table" class="table table-borderless table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="border-top-left-radius: 25px;" scope="col">username</th>
+                    <th style="border-top-right-radius: 25px;" scope="col">Bid Rate</th>
+                </tr>
+            
+            </thead>
+            <tbody>
+                 <%agent.bids.forEach(function(bid){ %>
+                    
+                <tr>
+                            <td><a href="/agents/<%= agent._id %>/bids/<%= bid._id %>"><%= bid.author.username%> </a></td>
+                            <td><%= bid.rate %>%</td>
+                </tr>
+            <% }) %>
+            </tbody>
+        
+        </table>
+    </div>
+ 
+    
+        <a class="btn btn-success" href="/agents/<%=agent._id%>/new">Bid</a>
+  
+  
+    
+</div>
+
+
+<%- include("../partials/footer") %>
