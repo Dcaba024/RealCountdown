@@ -7,6 +7,7 @@ var UserSchema = new mongoose.Schema({
     email:  String,
     image: String,
     isAgent: {type: Boolean, default: false},
+    isBuyer: {type: Boolean, default: false},
     bids: [
         {
             type: mongoose.Schema.Types.ObjectId,

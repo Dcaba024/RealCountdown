@@ -12,7 +12,8 @@ var passport    = require("passport"),
 var homeRoutes = require("./routes/homes"),
     indexRoutes = require("./routes/index"),
     bidRoutes = require("./routes/bids"),
-    agentsRoute = require("./routes/agents");
+    agentsRoute = require("./routes/agents"),
+    buyersRoute = require("./routes/buyers");
 
 
 
@@ -68,6 +69,7 @@ app.use("/homes",homeRoutes);
 app.use(indexRoutes);
 app.use("/homes/:id/bids", bidRoutes);
 app.use("/agents", agentsRoute);
+app.use("/buyers", buyersRoute);
 
 
 

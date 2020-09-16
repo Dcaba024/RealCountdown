@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+   <div class="jumbotron">
+       <p>Want to be buy a house but dont want to spend so much on a real estate agent? well here the real estate agents bid for you, View the lowest rates by agents and save</p>
+       <a href="/buyers/<%= currentUser %>/new" class="btn btn-primary">Start Saving</a>
+   </div>
+
+   
+</div>
+
+<div class="container">
+    <% buyers.forEach(function(buyer){ %>
+        <p>here we will display everyone who is a buyer so the agents can bid on them</p>
+        <div>
+            <p><%= buyer.username %> is a buyer now</p>
+        </div>
+
+
+    <% }) %>
+   
+</div>
+
+
+
+
+
+
+<%- include("../partials/footer") %>
