@@ -1,9 +1,8 @@
 <%- include("../partials/header") %>
 
-<div class="container">
-    This is the user profile page
-
-    <img src="<%= user.image %>" alt="">
+<div class="container" id="profile-container">
+    <img class="img-thumbnail" src="<%= user.image %>" alt="">
+    <h1 id="profile-username"><%=user.username %></h1>
 
 </div>
 

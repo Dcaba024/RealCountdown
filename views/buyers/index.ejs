@@ -3,21 +3,89 @@
 <div class="container">
    <div class="jumbotron">
        <p>Want to be buy a house but dont want to spend so much on a real estate agent? well here the real estate agents bid for you, View the lowest rates by agents and save</p>
-       <a href="/buyers/<%= currentUser %>/new" class="btn btn-primary">Start Saving</a>
+       <a href="/buyers/<%= currentUser._id %>/new" class="btn btn-primary">Start Saving</a>
+       <p><%= currentUser %></p>
    </div>
 
    
 </div>
 
 <div class="container">
-    <% buyers.forEach(function(buyer){ %>
-        <p>here we will display everyone who is a buyer so the agents can bid on them</p>
-        <div>
-            <p><%= buyer.username %> is a buyer now</p>
-        </div>
+
+    <ul id="index-card"> 
+        <% buyers.forEach(function(buyer){ %>
+            <div id="icard">
+                <li class="card">
+                    <a href="" id="view-bid" class="btn btn-primary btn-sm">Details</a>
+
+                    <div class="d-flex justify-content-start">
+                        <img class="pic" src="<%=buyer.image %>" alt="" height="100%" width="100%">
+                    </div>
+
+                    <p id="par-card"><%= buyer.username %> is a buyer</p>
+                    <p id="sell-amount">Current lowest bid: 1</p>
+
+                    <% var tmp = 10; %>
+                    <% buyer.bids.forEach(function(bid){ %>
+                    
+                     <%if(bid.rate < tmp){ %>
+                         <% tmp = bid.rate %>
+                     <% } %>                            
+                     
+                    
+                    <% }) %>
+
+                    <% if(tmp < 10){ %>
+                        <p id="bid-rate">Lowest Bid is: <%= tmp %>%</p>
+                    <% } %>
 
 
-    <% }) %>
+
+
+                    <div id="status">
+                        <p>Time Remaining</p>
+
+                       
+
+                       <% var countDownDate = buyer.countdown %>
+                        
+                       <% var now = new Date().getTime(); %>
+                        
+                       <% var distance = countDownDate - now; %>
+
+                       <% var days = Math.floor(distance / (1000 * 60 * 60 * 24)); %>
+                       <% var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); %>
+                       <% var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); %>
+                       <% var seconds = Math.floor((distance % (1000 * 60)) / 1000); %>
+                       <% var timeRemaining = (days - 29) + "d " + hours + "h " + minutes + "m " + seconds + "s "; %>
+
+
+
+
+
+                      
+                        <p><%= timeRemaining %></p>
+                        <p>Ends <%= buyer.expiredDate %></p>
+                        <p>sept 3 2020</p>
+                    </div>
+                   
+
+                   
+                </li>
+
+
+            </div>
+            <p>here we will display everyone who is a buyer so the agents can bid on them</p>
+            <div>
+                <p><%= buyer.username %> is a buyer now</p>
+            </div>
+    
+    
+        <% }) %>
+       
+
+
+    </ul>
    
 </div>
 

@@ -6,6 +6,8 @@ var UserSchema = new mongoose.Schema({
     password: String,
     email:  String,
     image: String,
+    countdown: Number,
+    expiredDate: String,
     isAgent: {type: Boolean, default: false},
     isBuyer: {type: Boolean, default: false},
     bids: [

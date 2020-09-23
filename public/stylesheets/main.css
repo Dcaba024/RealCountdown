@@ -135,3 +135,17 @@ span{
 #agent-pic{
     width: 50%;
 }
+
+#profile-container{
+    background-color: white;
+}
+#profile-username{
+    text-align: center;
+}
+
+.img-thumbnail{
+   margin-left: 40%;
+    margin-top: 20px;
+    width: 20%;
+    border-radius: 50%;
+}
