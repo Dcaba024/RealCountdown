@@ -1,11 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var User        = require("../models/user");
+var middleware = require("../middleware/index.js");
 
 
 
 //INDEX
-router.get("/", function(req, res){
+router.get("/",middleware.isLoggedIn, function(req, res){
     User.find({isAgent: true}).exec(function(err, foundAgents){
         if(err){
             console.log(err);
@@ -17,7 +18,7 @@ router.get("/", function(req, res){
 });
 
 //SHOW
-router.get("/:id", function(req, res){
+router.get("/:id",middleware.isLoggedIn, function(req, res){
     User.findById(req.params.id).populate("bids").exec(function(err, foundAgent){
         if(err){
             console.log(err);
@@ -28,7 +29,7 @@ router.get("/:id", function(req, res){
 });
 
 //NEW AGENT BID
-router.get("/:id/new", function(req, res){
+router.get("/:id/new",middleware.isLoggedIn, function(req, res){
    User.findById(req.params.id, function(err, foundAgent){
     if(err){
         console.log(err)
@@ -40,7 +41,7 @@ router.get("/:id/new", function(req, res){
 
 
 //CREATE NEW BID
-router.post("/", function(req, res){
+router.post("/",middleware.isLoggedIn, function(req, res){
     //need to create bid
 });
 

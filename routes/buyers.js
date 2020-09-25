@@ -1,11 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var User        = require("../models/user");
+var middleware = require("../middleware/index.js");
 
 
 
 //INDEX
-router.get("/", function(req, res){
+router.get("/",middleware.isLoggedIn, function(req, res){
     // User.find({isBuyer: true}).exec(function(err, foundBuyers){
     //     if(err){
     //         console.log(err);
@@ -47,7 +48,7 @@ router.get("/", function(req, res){
 });
 
 //NEW BUYER ADDED TO THE DATABASE
-router.get("/:id/new", function(req, res){
+router.get("/:id/new", middleware.isLoggedIn, function(req, res){
 
     var d = new Date();
     var year = d.getFullYear();
