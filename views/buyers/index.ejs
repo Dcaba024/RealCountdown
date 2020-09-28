@@ -16,7 +16,7 @@
         <% buyers.forEach(function(buyer){ %>
             <div id="icard">
                 <li class="card">
-                    <a href="" id="view-bid" class="btn btn-primary btn-sm">Details</a>
+                    <a href="/buyers/<%= buyer._id %>/show" id="view-bid" class="btn btn-primary btn-sm">Details</a>
 
                     <div class="d-flex justify-content-start">
                         <img class="pic" src="<%=buyer.image %>" alt="" height="100%" width="100%">

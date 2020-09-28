@@ -78,7 +78,18 @@ router.get("/:id/new", middleware.isLoggedIn, function(req, res){
 });
 
 
-//SHOW 
+//SHOW BUYER BIDDING INFO
+router.get("/:id/show", function(req, res){
+    User.findById(req.params.id).populate("bids").exec(function(err, foundBuyer){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("buyers/show", {buyer: foundBuyer, currentUser: req.user});
+        }
+    });
+});
+
+
 
 
 module.exports = router;

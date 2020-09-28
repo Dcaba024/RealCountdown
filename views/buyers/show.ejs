@@ -1,1 +1,77 @@
-<h1>This is the show route</h1>
+<%- include("../partials/header") %>
+<h1><%= buyer %></h1>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <h1 style="font-size:24px;font-weight:bold;"><%= buyer.address %></h1>
+        </div>
+        <div class="dropdown-divider"></div>
+        
+    </div>
+
+<div class="row">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img src="<%= buyer.image%>" class="d-block w-100" alt="...">
+          </div>
+          <!-- <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div> -->
+        </div>
+      </div>
+
+      <table id="bid-table" class="table table-borderless table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th style="border-top-left-radius: 25px;" scope="col">Agent username</th>
+                <th style="border-top-right-radius: 25px;" scope="col">Bid Rate</th>
+            </tr>
+        
+        </thead>
+        <tbody>
+             <%buyer.bids.forEach(function(bid){ %>
+                
+            <tr>
+                        <td><a href="/buyers/<%= buyer._id %>/buyerbids/<%= bid._id %>"><%= bid.author.username%> </a></td>
+                        <td><%= bid.rate %>%</td>
+            </tr>
+        <% }) %>
+        </tbody>
+    
+    </table>
+        
+
+
+
+</div>
+
+<a class="btn btn-success" href="/buyers/<%=buyer._id%>/buyerbids/new">Bid</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+</div>
+
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,22 @@
+<%- include("../partials/header") %>
+
+<div style="text-align: center;">
+    <h1>Add a new bid to <%= buyer.address %></h1>
+</div>
+
+<div style="width: 30%; margin: 50px auto;">
+    <form action="/buyers/<%= buyer._id %>/buyerbids" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="number" name="bid[rate]" placeholder="Rate" min="0.00" step="1.00">
+        </div>
+        
+        
+        
+        <button class="btn btn-lg btn-block btn-outline-dark">Submit!</button>
+    </form>
+
+    <a href="/buyers">Go back</a>
+</div>
+
+
+<%- include("../partials/footer") %>
