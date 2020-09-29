@@ -54,4 +54,59 @@ router.post("/", function(req, res){
     });
 });
 
+//SHOW BIDS
+router.get("/:bid_id", function(req, res){
+    Bid.findById(req.params.bid_id).exec(function(err, foundbid){
+
+        if(err){
+            console.log(err)
+        } else {
+            
+            res.render("buyers/showbid", {buyer:req.params.id, bid:foundbid, currentUser: req.user});
+        }
+    });
+
+   
+});
+
+
+// DESTROY BIDS
+router.delete("/:bid_id", function(req,res){
+    Bid.findByIdAndRemove(req.params.bid_id, function(err){
+        if(err){
+            console.log(err)
+        } else{
+            res.redirect("/buyers/" + req.params.id + "/show");
+        }
+    })
+});
+
+//EDIT BIDS
+router.get("/:bid_id/edit", function(req, res){
+    
+    Bid.findById(req.params.bid_id, function(err, foundbid){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("buyers/edit", {buyer_id: req.params.id, bid:foundbid, currentUser: req.user}); 
+        }
+    });
+
+  
+});
+
+//UPDATE ROUTE FOR BIDS
+router.put("/:bid_id", function(req,res){
+    Bid.findByIdAndUpdate(req.params.bid_id, req.body.bid, function(err, updatedbid){
+        if(err){
+            res.redirect("back");
+        } else{
+            res.redirect("/buyers/" + req.params.id + "/show");
+        }
+    });
+});
+
+
+
+
 module.exports = router;

@@ -1,0 +1,20 @@
+<%- include("../partials/header") %>
+
+
+
+<div style="width: 30%; margin: 50px auto;">
+    <form action="/buyers/<%= buyer_id %>/buyerbids/<%= bid._id %>/?_method=PUT" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="number" name="bid[rate]" value="<%= bid.rate %>" min="0.00" step="1.00">
+        </div>
+        
+        
+        
+        <button class="btn btn-lg btn-block btn-outline-dark">Submit!</button>
+    </form>
+
+    <a href="/homes">Go back</a>
+</div>
+
+
+<%- include("../partials/footer") %>
