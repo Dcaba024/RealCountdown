@@ -15,7 +15,17 @@ var UserSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Bid"
         }
-    ]
+    ],
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Review"
+        }
+    ],
+    rating:{
+        type: Number,
+        default: 0
+    }
 });
 
 UserSchema.plugin(passportLocalMongoose);
