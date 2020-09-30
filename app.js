@@ -14,7 +14,8 @@ var homeRoutes = require("./routes/homes"),
     bidRoutes = require("./routes/bids"),
     agentsRoute = require("./routes/agents"),
     buyersRoute = require("./routes/buyers"),
-    buyerBidRoute = require("./routes/buyerbids");
+    buyerBidRoute = require("./routes/buyerbids"),
+    reviewRoutes = require("./routes/reviews");
 
 
 
@@ -72,6 +73,7 @@ app.use("/homes/:id/bids", bidRoutes);
 app.use("/agents", agentsRoute);
 app.use("/buyers", buyersRoute);
 app.use("/buyers/:id/buyerbids", buyerBidRoute);
+app.use("/agents/:id/reviews", reviewRoutes);
 
 
 
