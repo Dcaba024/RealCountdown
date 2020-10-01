@@ -1,1 +1,30 @@
-<h1>you hit the reviews index page</h1>
+<%- include("../partials/header") %>
+
+
+<div class="container">
+    <div class="row">
+        <div class="column">
+            <img id="agent-image" src="<%=agent.image%>" alt="" >
+        </div>
+       
+        <div class="column">
+            <p>Agents username: <%= agent.username%></p>
+            <p>Agents email: <%= agent.email %></p>
+            <p>Agents name: </p>
+            <p>Agents lastname: </p>
+        </div>
+
+        <div class="row">
+            
+         
+                <p><a href="" class="btn btn-outline-info">Rate</a><p>Agents Rating</p></p>
+           
+               
+        
+        </div>
+        
+    </div>
+   
+</div>
+
+<%- include("../partials/footer") %>

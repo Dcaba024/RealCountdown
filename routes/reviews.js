@@ -19,4 +19,15 @@ router.get("/", function(req, res){
     });
 });
 
+//NEW 
+router.get("/new", middleware.isLoggedIn, function(req, res){
+    User.findById(req.params.id, function(err, agent){
+        if(err){
+            req.flash("error", err.message);
+            return res.redirect("back");
+        }
+        res.render("reviews/new", {agent: agent});
+    })
+})
+
 module.exports = router;

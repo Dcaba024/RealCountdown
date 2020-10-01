@@ -149,3 +149,20 @@ span{
     width: 20%;
     border-radius: 50%;
 }
+
+#agent-image{
+    width: 300px;
+    margin-left: 10%;
+}
+
+.column{
+    float: left;
+    width: 50%;
+}
+#Rating{
+    margin-left: inherit;
+    display: inline-block;
+}
+
+
+
