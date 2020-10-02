@@ -52,6 +52,10 @@ router.post("/register",upload.single('image'), function(req, res){
         
         var newUser = new User({
             username: req.body.username, 
+            name: req.body.name,
+            lastname: req.body.lastname,
+            phoneNumber: req.body.phoneNumber,
+
             email: req.body.email,
              // add cloudinary url for the image to the home object under avatar property
             image: result.secure_url
