@@ -11,7 +11,7 @@ router.get("/",middleware.isLoggedIn, function(req, res){
         if(err){
             console.log(err);
         } else{
-            res.render("agents/index", {Agents:foundAgents});
+            res.render("agents/index", {Agents:foundAgents, currentUser: req.user});
         }
     })
    

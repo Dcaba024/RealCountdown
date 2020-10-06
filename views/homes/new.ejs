@@ -1,8 +1,40 @@
 <%- include("../partials/header") %>
 
+<div class="container">
+    <div class="row">
+        <div class="column" id="agent-table">
+            <h1>Seller</h1>
+        </div>
+        <div class="column" id="agent-table">
+            <h1>Agent</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" id="agent-table">
+            <img id="agent-pic" src="<%= currentUser.image%>" alt="...">
+        </div>
+        <div class="column" id="agent-table">
+            <img id="agent-pic" src="<%= agent.image %>" alt="">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <p>Name: <%= currentUser.name %></p>
+            <p></p>
+        </div>
+       
+    </div>
+ 
+        <a class="btn btn-success" href="/agents/<%=agent._id%>/new">Bid</a>
+        <a href="/agents/<%=agent._id%>/reviews/" class="btn btn-success">Reviews</a>
+  
+  
+    
+</div>
+
 <div style="text-align: center;">
-    <h1>Lets start selling your home</h1>
-    <p>first we need your home information dont worry we wont give these agents your address just the area where you live</p>    
+    <h1>Add a new bid to <%= agent.username %></h1>
 </div>
 
 <div style="width: 30%; margin: 50px auto;">
@@ -65,6 +97,22 @@
         
         <button class="btn btn-lg btn-block btn-outline-dark">Submit!</button>
     </form>
+</div>
+
+
+
+<div style="width: 30%; margin: 50px auto;">
+    <form action="/agents/" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="number" name="bid[rate]" placeholder="Rate" min="0.00" step="1.00">
+        </div>
+        
+        
+        
+        <button class="btn btn-lg btn-block btn-outline-dark">Submit!</button>
+    </form>
+
+    <a href="/homes">Go back</a>
 </div>
 
 

@@ -1,5 +1,5 @@
 body{
-    background-color:white;
+    background-color:#d9dbda;
 }
 
 .jumbotron{
@@ -64,7 +64,7 @@ nav{
     display: block;
     /* max-width:230px;
     max-height:95px; */
-    width: 235px;
+    width: 100px;
     height: auto;
 }
 
@@ -75,6 +75,9 @@ nav{
     margin-bottom: 15px;
     padding: 5px 5px 5px 5px;
    background-color: white;
+   width: 100%;
+   float: right;
+
 }
 
 .card{
@@ -83,16 +86,16 @@ nav{
 }
 #view-bid{
     box-sizing: content-box;
-    width: 10%;
+    width: 30%;
     position: absolute;
     bottom: 8px;
-    left: 80%;
+    left: 60%;
     
 }
 
 #par-card{
     position: absolute;
-    left: 80%;
+    left: 20%;
 }
 
 #sell-amount{
@@ -157,12 +160,21 @@ span{
 
 .column{
     float: left;
-    width: 50%;
+    width: 33%;
 }
 #Rating{
     margin-left: inherit;
     display: inline-block;
 }
 
+#index-card{
+    float: right;
+    width: 60%;
+    height: 40px;
+}
 
+#agent-table{
+    float: left;
+    width: 50%;
+}
 

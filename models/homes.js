@@ -3,6 +3,7 @@ var mongoose    = require("mongoose");
 //SCHEMA SETUP  
 var homeSchema = new mongoose.Schema({
     address: String,
+    mailingAddress: String,
     street: String,
     city: String,
     state: String,
