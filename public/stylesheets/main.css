@@ -178,3 +178,8 @@ span{
     width: 50%;
 }
 
+#phone-number{
+    position: absolute;
+    left: 110px;
+    top: 20px;
+}
