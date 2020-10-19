@@ -16,6 +16,13 @@
                         </p>
     
                      <% } %>
+
+                     <% if(currentUser){ %>
+                        <p>
+                            <a href="/users/<%= currentUser.id%>" class="btn btn-primary btn-large">View bids</a>
+                        </p>
+
+                     <% } %>
                     
                     <p>
                         <a class="btn btn-primary btn-large" href="/homes/new">Add new home</a>
@@ -62,10 +69,9 @@
                         
                             <a href="/homes/<%=home._id%>" id="view-bid" class="btn btn-primary btn-sm">Details</a>
                        
-                        <p id="par-card"><%= home.author.username %> house is in the <%= home.city %> area</p>
+                       
 
-                        <p id="sell-amount">House For sale: <br> <span>$<%= home.price %></span></p>
-
+                        
                         
                             <% var tmp = 10; %>
                             <% home.bids.forEach(function(bid){ %>
@@ -107,8 +113,7 @@
 
                           
                             <p><%= timeRemaining %></p>
-                            <p>Ends <%= home.expiredDate %></p>
-                            <p>sept 3 2020</p>
+                            
                         </div>
                         
                     </li>

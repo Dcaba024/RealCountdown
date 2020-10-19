@@ -6,6 +6,10 @@ body{
     padding: 1rem 2rem;
 }
 
+#mycountdown{
+    justify-content: center;
+}
+
 #delete-form {
     display: inline;
 }
@@ -68,6 +72,13 @@ nav{
     height: auto;
 }
 
+.showpic{
+    display: block;
+    width: 100px;
+    height: auto;
+    left: 50%;
+}
+
 
 
 #icard{
@@ -125,7 +136,7 @@ span{
 
 #status{
     position: absolute;
-    left: 65%;
+    left: 40%;
 }
 
 #searchbar{

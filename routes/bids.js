@@ -32,7 +32,14 @@ router.post("/", function(req, res){
                 } else {
                      //add username, and id to Bid
                      bid.author.id = req.user._id;
+                     //current users username
                      bid.author.username = req.user.username;
+                     //current bidders image
+                     bid.author.image = req.user.image;
+                    //current users name
+                     bid.author.name = req.user.name;
+                    //current users phone number
+                     bid.author.phoneNumber = req.user.phoneNumber;
                      console.log("New Bid user name will be " + req.user.username);
  
                      //save bid

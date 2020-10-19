@@ -23,26 +23,34 @@
           </div> -->
         </div>
       </div>
+     
 
-      <table id="bid-table" class="table table-borderless table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th style="border-top-left-radius: 25px;" scope="col">Agent username</th>
-                <th style="border-top-right-radius: 25px;" scope="col">Bid Rate</th>
-            </tr>
-        
-        </thead>
-        <tbody>
-             <%home.bids.forEach(function(bid){ %>
+      <div class="column">
+        <%home.bids.forEach(function(bid){ %>
+            <div id="icard">
+            <li class="card">
+                <div class="d-flex justify-content-end">
+                    <img class="showpic" src="<%= bid.author.image%>" alt="">
+                </div>
+                <p><%= bid.author.name %></p>
+              
+                <a href="/homes/<%= home._id %>/bids/<%= bid._id %>"><%= bid.author.username%> </a>
+                <p><%= bid.rate %>%</p>
+                <p><%= bid.author.phoneNumber %></p>
+
+            </li>
+              
+
+
+            </div>
                 
-            <tr>
-                        <td><a href="/homes/<%= home._id %>/bids/<%= bid._id %>"><%= bid.author.username%> </a></td>
-                        <td><%= bid.rate %>%</td>
-            </tr>
+            
+          
         <% }) %>
-        </tbody>
+
+      </div>
+            
     
-    </table>
         
 
 
