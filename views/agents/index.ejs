@@ -30,6 +30,7 @@
                             <img class="pic" src="<%= agent.image %>" alt="" height="100%" width="100%">
                         </div>
                         <p id="par-card"><%=agent.name %> <%= agent.lastname %></p>
+                        <p><%= agent.agentSavings %>%</p>
                         <p><%= agent.phoneNumber %></p>
         
                         <a href="/agents/<%= agent._id %>/new" id="view-bid" class="btn btn-primary">Start Countdown</a>

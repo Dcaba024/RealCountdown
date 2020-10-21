@@ -1,0 +1,12 @@
+<%- include("../partials/header") %>
+
+<div style="width: 30%; margin: 50px auto;">
+    <form action="/users/<%= user._id %>/agentsavings/?_method=PUT" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="number" name="agentSavings" placeholder="Savings">
+        </div>
+    </form>
+</div>
+
+
+<%- include("../partials/footer") %>

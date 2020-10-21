@@ -55,6 +55,7 @@ router.post("/register",upload.single('image'), function(req, res){
             name: req.body.name,
             lastname: req.body.lastname,
             phoneNumber: req.body.phoneNumber,
+            agentSavings: 0,
 
             email: req.body.email,
              // add cloudinary url for the image to the home object under avatar property
@@ -131,6 +132,36 @@ router.get("/users/:id/profile", function(req, res){
             res.render("users/profile", {user:foundUser ,currentUser: req.user});
         }
     });
+});
+
+// edit Savings form
+router.get("/users/:id/agentsavings", function(req, res){
+   User.findById(req.params.id, function(err, foundUser){
+       if(err){
+           req.flash("error");
+           res.redirect("/");
+
+       } else{
+           res.render("users/agentsavings", {user:foundUser});
+       }
+   }) 
+});
+
+//update savings
+router.put("/users/:id/agentsavings", function(req, res){
+
+   User.updateOne({_id:req.user._id}, {
+       agentSavings: req.body.agentSavings
+       
+   }, function(err){
+       if(err){
+        console.log(err);
+       } else{
+           console.log(req.user);
+           res.redirect("/users/" + req.params.id + "/profile");
+       }
+      
+   })
 });
 
 //ABOUT US ROUTE

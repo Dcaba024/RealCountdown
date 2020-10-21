@@ -33,7 +33,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/resources">RESOURCES</a>
             </li>
-            <% if(currentUser && (currentUser.isAgent === false)){ %>
+            <% if(currentUser && (currentUser)){ %>
             <li class="nav-item active">
                 <a class="nav-link" href="/users/<%= currentUser.id %>/profile">Profile</a>
             </li>
