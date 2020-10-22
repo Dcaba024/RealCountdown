@@ -1,4 +1,5 @@
 var express     = require("express");
+const session   = require("express-session");
 var app         = express();
 var bodyParser  = require("body-parser");
 var mongoose    = require("mongoose");
@@ -16,27 +17,38 @@ var homeRoutes = require("./routes/homes"),
     buyersRoute = require("./routes/buyers"),
     buyerBidRoute = require("./routes/buyerbids"),
     reviewRoutes = require("./routes/reviews");
+const MongoDBStore = require("connect-mongo")(session)
 
 
 
 
+const dbUrl = "mongodb://localhost/realcountdown";
 
 
-
-mongoose.connect("mongodb://localhost/realcountdown", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride("_method"));
 app.use(flash());
 
+const   store = new MongoDBStore({
+    url: dbUrl,
+    secret: "thisshouldbeabettersecret",
+    touchAfter: 24 * 60 * 60
+});
 
+
+store.on("error", function(e){
+    console.log("SESSION STORE ERROR", e)
+});
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
+    store,
     secret: "1 + 1 = 2",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
 }));
 
 
