@@ -93,7 +93,7 @@ app.use("/agents/:id/reviews", reviewRoutes);
 
 
 
-
-app.listen(3000, function(){ 
-    console.log("RealCountdown server has started!!");
+const port = process.env.port || 3000;
+app.listen(port, function(){ 
+    console.log("Serving on port" + port);
 });
