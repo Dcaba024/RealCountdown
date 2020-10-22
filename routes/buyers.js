@@ -7,13 +7,7 @@ var middleware = require("../middleware/index.js");
 
 //INDEX
 router.get("/",middleware.isLoggedIn, function(req, res){
-    // User.find({isBuyer: true}).exec(function(err, foundBuyers){
-    //     if(err){
-    //         console.log(err);
-    //     } else{
-    //         res.render("buyers/index", {buyers:foundBuyers, currentUser: req.user});
-    //     }
-    // });
+
 
      //query search
      var noMatch = '';
@@ -26,8 +20,10 @@ router.get("/",middleware.isLoggedIn, function(req, res){
                  
                  if(foundBuyers.length < 1){
                       noMatch = "No campground match that query, please try again."
-                 }
-                 res.render("buyers/index", {Agents:foundAgents, currentUser: req.user, noMatch:noMatch});
+                 } 
+                res.render("buyers/index", {Agents:foundAgents, currentUser: req.user, noMatch:noMatch});
+            
+                
              }
          });
  
@@ -50,30 +46,7 @@ router.get("/",middleware.isLoggedIn, function(req, res){
 //NEW BUYER ADDED TO THE DATABASE
 router.get("/:id/new", middleware.isLoggedIn, function(req, res){
 
-    // var d = new Date();
-    // var year = d.getFullYear();
-    // var day = d.getDate();
-    // day += 7;
-    // var month = d.getMonth();
-    // var expired = new Date(year,month, day);
-
-    // var expiredDate = expired.toDateString();
-    // console.log("year = " + year + "\n Month = " + month);
-    // var BuyerCountdown = new Date(year, month, day).getTime();
-
-    // User.updateOne({_id:req.user._id}, {
-    //     isBuyer: true,
-    //     countdown: BuyerCountdown,
-    //     expiredDate: expiredDate
-
-    // }, function(err){
-    //     if(err){
-    //         console.log(err);
-    //     } else{
-    //         console.log(req.user);
-    //         res.redirect("/buyers");
-    //     }
-    // })
+   
     User.findById(req.params.id).populate("bids").exec(function(err, foundAgents){
         if(err){
             console.log(err);
