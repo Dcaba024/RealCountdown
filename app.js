@@ -22,7 +22,7 @@ const MongoDBStore = require("connect-mongo")(session)
 
 
 
-const dbUrl = "mongodb://localhost/realcountdown";
+const dbUrl = process.env.DB_URL || "mongodb://localhost/realcountdown";
 
 
 mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
@@ -32,9 +32,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(methodOverride("_method"));
 app.use(flash());
 
+const secret = process.env.SECRET || "thisshouldbeabettersecret"
+
 const   store = new MongoDBStore({
     url: dbUrl,
-    secret: "thisshouldbeabettersecret",
+    secret,
     touchAfter: 24 * 60 * 60
 });
 
@@ -46,7 +48,7 @@ store.on("error", function(e){
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     store,
-    secret: "1 + 1 = 2",
+    secret,
     resave: false,
     saveUninitialized: true
 }));
