@@ -70,16 +70,7 @@ app.use(function(req, res, next){
     next();
 });
 
-// Home.create({
-//     address: "7910 taft st apt205", Image: "https://si.wsj.net/public/resources/images/B3-DM067_RIGHTS_IM_20190319162958.jpg", homeOwner: "Nicholus cruz", description: "Nice 4 bedroom apartment"
-    
-// }, function(err, home){
-//     if(err){
-//         console.log(err);
-//     } else{
-//         console.log("NEWLY CREATED HOME");
-//     }
-// });
+
 
 app.use("/homes",homeRoutes);
 app.use(indexRoutes);
