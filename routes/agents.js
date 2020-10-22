@@ -40,10 +40,6 @@ router.get("/:id/new",middleware.isLoggedIn, function(req, res){
 });
 
 
-//CREATE NEW BID
-router.post("/",middleware.isLoggedIn, function(req, res){
-    //need to create bid
-});
 
 
 
