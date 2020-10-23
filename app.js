@@ -22,7 +22,7 @@ const MongoDBStore = require("connect-mongo")(session)
 
 
 
-const dbUrl = process.env.DB_URL || "mongodb://localhost/realcountdown";
+
 
 
 mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
