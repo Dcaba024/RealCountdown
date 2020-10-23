@@ -25,7 +25,7 @@ const MongoDBStore = require("connect-mongo")(session)
 const dbUrl = process.env.DB_URL || "mongodb://localhost/realcountdown";
 
 
-mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect("mongodb+srv://DylanC:qF7u9qtrvsiaNv0G@cluster0.v3ps0.mongodb.net/Realcountdown?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
