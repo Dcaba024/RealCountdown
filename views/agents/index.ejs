@@ -2,7 +2,10 @@
 
 <div class="container">
 
+  
+
     <div class="row">
+        <% if(currentUser) { %>
         <div class="column" id="agent-table">
             <h1>Seller</h1>
             <div id="agent-table">
@@ -12,44 +15,149 @@
         <div class="column" id="agent-table">
             <h1>Agents</h1>
         </div>
+   
+    <% } else { %>
+        <div class="column">
+            <form action="/register" method="POST" enctype="multipart/form-data" id="background1">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">username</label>
+                        <input type="text" class="form-control" name="username" placeholder="username">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">password</label>
+                        <input type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lastname">LastName</label>
+                        <input type="text" class="form-control" name="lastname" placeholder="LastName">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="text" class="form-control" name="phoneNumber" placeholder="(XXX)XXX-XXXX">
+                    </div>
+                </div>
+                
+               
+               <div class="form-row">
+                   <div class="form-group">
+                       <label for="email">Email</label>
+                       <input type="email" class="form-control" name="email" placeholder="John@doe.com">
+                   </div>
+               </div>
+                
+               <div class="form-row">
+                   <div class="form-group">
+                       <label for="agentCode">Agent Code (if you have one)</label>
+                        <input type="text" class="form-control" name="agentCode" placeholder="Agent Code">
+                   </div>
+               </div>
+                
+                <div class="form-group">
+                    <label for="image">profile image</label>
+                    <input class="form-control" id="image" type="file" name="image" placeholder="profile image" accept="image/*" required>
+                </div>
+
+               <div class="form-row">
+                   <div class="form-group">
+                    <label for="Mailing Address">Mailing Address</label>
+                    <input type="text" class="form-control" name="mailingAddress" placeholder="Mailing Address">
+                   </div>
+               </div>
+               <div class="form-row">
+                   <div class="form-group">
+                       <label for="zip">Zip</label>
+                       <input type="text" name="zip" class="form-control" placeholder="zip">
+                   </div>
+               </div>
+               <div class="form-row">
+                   <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="propertyListed" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">My property is listed by other brokers</label>
+
+                      </div>
+                   </div>
+               </div> 
+
+               <div class="form-row">
+                    <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="policy" class="custom-control-input" id="customCheck2">
+                        <label class="custom-control-label" for="customCheck2">Agree to policies</label>
+                    </div>
+                    </div>
+                </div> 
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+
+        </div>
+       
+
+
+
+   
+        <% }%>
+
+        <% Agents.forEach(function(agent){ %>
+            <div class="column">
+                <div id="agent-table">
+                  
+                </div>
+                <div id="agent-table">
+                    <div id="icard">
+               
+                        <li class="card">
+                            <div class="d-flex justify-content-start">
+                                <img class="pic" src="<%= agent.image %>" alt="" height="100%" width="100%">
+                            </div>
+                            <p id="par-card"><%=agent.name %> <%= agent.lastname %></p>
+                            <p><%= agent.agentSavings %>%</p>
+                            <p><%= agent.phoneNumber %></p>
+            
+                            <a href="/agents/<%= agent._id %>/new" id="view-bid" class="btn btn-primary">Start Countdown</a>
+                        </li>
+            
+                    </div>
+    
+                </div>
+
+
+
+            </div>
+               
+               
+        
+    
+    
+            
+          
+            
+            
+            
+            <% }) %>
+
+
+
+
+
+        
     </div>
 
 
-
-    <% Agents.forEach(function(agent){ %>
-
-        <div class="row">
-            <div id="agent-table">
-              
-            </div>
-            <div id="agent-table">
-                <div id="icard">
-           
-                    <li class="card">
-                        <div class="d-flex justify-content-start">
-                            <img class="pic" src="<%= agent.image %>" alt="" height="100%" width="100%">
-                        </div>
-                        <p id="par-card"><%=agent.name %> <%= agent.lastname %></p>
-                        <p><%= agent.agentSavings %>%</p>
-                        <p><%= agent.phoneNumber %></p>
-        
-                        <a href="/agents/<%= agent._id %>/new" id="view-bid" class="btn btn-primary">Start Countdown</a>
-                    </li>
-        
-                </div>
-
-            </div>
-           
-    
-
-        </div>
-
-        
-      
-        
-        
-        
-        <% }) %>
+  
 </div>
 
 

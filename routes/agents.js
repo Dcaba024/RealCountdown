@@ -6,7 +6,7 @@ var middleware = require("../middleware/index.js");
 
 
 //INDEX
-router.get("/",middleware.isLoggedIn, function(req, res){
+router.get("/", function(req, res){
     User.find({isAgent: true}).exec(function(err, foundAgents){
         if(err){
             console.log(err);

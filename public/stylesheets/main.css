@@ -1,6 +1,11 @@
 body{
     background-color:#d9dbda;
 }
+
+#background1{
+    background-color: white;
+    padding: 40px;
+}
 #showimage{
     background-image: url("https://i.imgur.com/G73wYqR.png?1");
     background-size: 100% 100%;
@@ -98,16 +103,17 @@ nav{
 #icard{
     margin-left: 5px;
     margin-bottom: 15px;
-    padding: 5px 5px 5px 5px;
+    
    background-color: white;
    width: 100%;
-   float: right;
+   float: left;
 
 }
 
 .card{
     border-color: white;
     overflow: auto;
+    width: 400%;
 }
 #view-bid{
     box-sizing: content-box;
